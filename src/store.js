@@ -25,16 +25,37 @@ new VideoGame('XCOM: Enemy Unknown', 15.00, 'PC', 300, 1800),
 new VideoGame('Super Smash Bros Melee', 63.90, 'Game Cube', 300, 2400)
 ];
 
-function findProducts(belowCost) {
+function findProducts(obj) {
   var result = [];
-  if(belowCost) {
+  console.log(obj.belowCost)
+  
+  
+  if(obj.belowDuration && obj.belowCost){
+     for (var i = products.length - 1; i >= 0; i--) {
+      var product = products[i];
+      if(product.getDuration() <= obj.belowDuration && product.price <= obj.belowCost ) {
+        result.push(product);
+      }
+    }
+  }else if(obj.belowCost) {
+
     for (var i = products.length - 1; i >= 0; i--) {
       var product = products[i];
-      if(product.price <= belowCost) {
+      if(product.price <= obj.belowCost) {
+        result.push(product);
+      }
+    }
+  
+  }else if (bj.belowDuration ){
+    for (var i = products.length - 1; i >= 0; i--) {
+      var product = products[i];
+      if(product.getDuration() <= obj.belowDuration ) {
         result.push(product);
       }
     }
   }
+
+  
   return result;
 }
 
