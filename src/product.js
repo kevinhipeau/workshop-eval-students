@@ -6,7 +6,7 @@ class Product{
      this.runningTime = runningTime
     
   }
-   toString() {
+   toString(currency, rateCurrency) {
       var currency = currency || '$';
       var rateCurrency = rateCurrency || 1;
       return `${this.name} cost ${this.price * rateCurrency} ${currency} duration: ${this.getDuration()} minutes`;
