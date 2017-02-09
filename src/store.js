@@ -31,8 +31,9 @@ function findProducts(obj,arg) {
   for (var y = 0; y < products.length; y++) {
     var resultP = true;
     for (var i = 0; i < obj.length; i++) {
-        if (products[y][obj[i]] == arg[i] && resultP == true) {
-            console.log("ff")
+      console.log(arg[i])
+        if (products[y][obj[i]] <= arg[i] && resultP == true) {
+          
         }else{
           resultP = false;
         }
