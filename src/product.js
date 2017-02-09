@@ -1,32 +1,53 @@
 var chalk = require('chalk');
 class Product{
-  constructor(name, price){
+  constructor(name, price, runningTime){
      this.name = name;
      this.price = price;
+     this.runningTime = runningTime
+    
   }
    toString() {
       var currency = currency || '$';
       var rateCurrency = rateCurrency || 1;
-      return `${this.name} cost ${this.price * rateCurrency} ${currency}`;
+      return `${this.name} cost ${this.price * rateCurrency} ${currency} duration: ${this.getDuration()} minutes`;
+  }
+  getDuration(){
+    
+      return  this.runningTime;
   }
 }
 class Book extends Product{
-    constructor(name, price, isbn){
+    constructor(name, price, isbn, minDuration, maxDuration){
       super(name,price);
       this.isbn = isbn;
+      this.minDuration = minDuration;
+      this.maxDuration = maxDuration;
     }
+    getDuration(){
+     
+      return (this.minDuration + this.maxDuration)/2;
+    }
+
+
 
 }
 class DVD extends Product{
-    constructor(name, price, moovie){
-      super(name,price);
+    constructor(name, price, moovie,runningTime){
+   
+      super(name,price,runningTime);
       this.moovie = moovie;
     }
 }
 class VideoGame extends Product{
-    constructor(name, price, platform){
+    constructor(name, price, platform,minDuration, maxDuration){
       super(name,price);
      this.platform = platform;
+     this.minDuration = minDuration;
+      this.maxDuration = maxDuration;
+    }
+    getDuration(){
+     
+      return (this.minDuration + this.maxDuration)/2;
     }
 }
 /*
